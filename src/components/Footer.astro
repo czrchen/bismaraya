@@ -1,0 +1,77 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="brand">
+        <span class="brand-text">Bismaraya</span>
+        <span class="brand-tag">Ikan Mas</span>
+      </a>
+      <p>A leading surimi seafood manufacturer in Kota Kinabalu, Sabah — fish balls, fish cakes, rolls, tofu and dumplings under the Ikan Mas brand.</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/bismarayasb/" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="/">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/products">Products</a>
+      <a href="/contact">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/products">Fish Balls &amp; Cakes</a>
+      <a href="/products">Rolls &amp; Tofu</a>
+      <a href="/products">Dumplings</a>
+      <a href="/products">Nuggets</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <p class="muted">Lot 24, Lorong Mangga 2, Sedco / BDC Light Industrial Estate, 88450 Kolombong, Inanam, Sabah</p>
+      <a href="tel:+608843327 8">088-433 278 / 437 273</a>
+      <a href="mailto:bsmaraya@gmail.com">bsmaraya@gmail.com</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© {year} Bismaraya Sdn Bhd · Ikan Mas · Kota Kinabalu, Sabah</span>
+    <span>Made in Malaysia</span>
+  </div>
+</footer>
+
+<style>
+  .footer { position: relative; background: var(--ink); color: #CFC7C5; margin-top: 110px; padding: 70px 0 30px; }
+  .footer-inner { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1.4fr; gap: 40px; }
+  .brand { display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px; }
+  .brand-text { font-family: var(--font-display); font-weight: 800; font-size: 1.45rem; color: #fff; letter-spacing: -0.03em; }
+  .brand-tag { font-family: var(--font-display); font-weight: 600; font-size: .8rem; color: var(--gold); }
+  .footer-brand p { color: #9A8F8D; max-width: 330px; font-size: .95rem; line-height: 1.6; }
+
+  .socials { display: flex; gap: 18px; margin-top: 22px; }
+  .socials a { font-size: .88rem; font-weight: 500; color: #9A8F8D; transition: color .2s ease; }
+  .socials a:hover { color: var(--gold); }
+
+  .footer-col h4 {
+    font-family: var(--font-display); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+    margin-bottom: 18px; color: #7A6F6D;
+  }
+  .footer-col a { display: block; color: #CFC7C5; padding: 6px 0; font-size: .95rem; transition: color .18s ease; }
+  .footer-col a:hover { color: #fff; }
+  .footer-col .muted { color: #9A8F8D; margin-bottom: 14px; font-size: .95rem; line-height: 1.6; }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    margin-top: 54px; padding-top: 26px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    color: #7A6F6D; font-size: .86rem;
+  }
+
+  @media (max-width: 860px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .footer-inner { grid-template-columns: 1fr; gap: 30px; } }
+</style>

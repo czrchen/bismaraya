@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Wave from "../components/Wave.astro";
+
+const filters = [
+  { id: "all", label: "All Products" },
+  { id: "balls", label: "Fish Balls & Cakes" },
+  { id: "rolls", label: "Rolls & Tofu" },
+  { id: "dumplings", label: "Dumplings" },
+];
+
+const products = [
+  { img: "/images/products/fish-balls.jpg", name: "Fish Balls", cat: "balls", catLabel: "Fish Balls & Cakes", desc: "Springy fried fish balls — the steamboat staple." },
+  { img: "/images/products/fish-cake.jpg", name: "Fish Cake", cat: "balls", catLabel: "Fish Balls & Cakes", desc: "Classic sliced fish cake for soups and noodles." },
+  { img: "/images/products/fish-cake-vege.jpg", name: "Vegetable Fish Cake", cat: "balls", catLabel: "Fish Balls & Cakes", desc: "Fish cake studded with crunchy vegetables." },
+  { img: "/images/products/nugget.jpg", name: "Fish Nuggets", cat: "balls", catLabel: "Fish Balls & Cakes", desc: "Crispy-coated fish nuggets, ready to fry." },
+  { img: "/images/products/roll-ikan.jpg", name: "Fish Roll", cat: "rolls", catLabel: "Rolls & Tofu", desc: "Golden fish rolls — a favourite snack and side." },
+  { img: "/images/products/string-roll.jpg", name: "String Roll", cat: "rolls", catLabel: "Rolls & Tofu", desc: "Delicate surimi string rolls." },
+  { img: "/images/products/seafood-tofu.jpg", name: "Seafood Tofu", cat: "rolls", catLabel: "Rolls & Tofu", desc: "Smooth seafood tofu for steamboat and stir-fry." },
+  { img: "/images/products/tauhu-sumbat.jpg", name: "Stuffed Tofu", cat: "rolls", catLabel: "Rolls & Tofu", desc: "Tofu pockets stuffed with surimi filling." },
+  { img: "/images/products/wantan-shumai.jpg", name: "Wantan & Shu Mai", cat: "dumplings", catLabel: "Dumplings", desc: "Surimi wantan and shu mai for dim sum." },
+  { img: "/images/products/wantan-goreng.jpg", name: "Fried Wantan", cat: "dumplings", catLabel: "Dumplings", desc: "Crispy fried wantan, ready to serve." },
+];
+---
+
+<Layout path="/products" title="Products — Bismaraya Ikan Mas Surimi Seafood">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow" data-reveal>Our products</span>
+      <h1 class="page-title" data-reveal>The Ikan Mas range</h1>
+      <p class="page-lead" data-reveal>
+        Fish balls, cakes, rolls, tofu and dumplings — all made from quality surimi.
+        Use the filter to find what you need; wholesale and export supply welcome.
+      </p>
+    </div>
+  </section>
+
+  <section class="shop">
+    <div class="container">
+      <div class="filter-bar" data-reveal>
+        {filters.map((f, i) => (
+          <button class={`filter-btn${i === 0 ? " active" : ""}`} data-filter={f.id}>{f.label}</button>
+        ))}
+      </div>
+
+      <div class="prod-grid" id="prod-grid">
+        {products.map((p) => (
+          <article class="pcard" data-cat={p.cat}>
+            <div class="pcard-media"><img src={p.img} alt={p.name} loading="lazy" /></div>
+            <div class="pcard-body">
+              <span class="pcard-cat">{p.catLabel}</span>
+              <h3>{p.name}</h3>
+              <p>{p.desc}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="no-results" id="no-results" hidden>No products in this category.</p>
+    </div>
+  </section>
+
+  <section class="oem ribbon">
+    <Wave side="top" />
+    <Wave side="bottom" />
+    <div class="container ribbon-inner">
+      <div class="oem-box" data-reveal>
+        <div class="oem-copy">
+          <h2>Wholesale &amp; export supply</h2>
+          <p>Stock Ikan Mas in your store, restaurant or steamboat outlet — reliable bulk supply, fresh and frozen. Tell us your volumes.</p>
+        </div>
+        <a href="/contact" class="btn btn-primary">Enquire now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero { padding: 64px 0 36px; }
+  .page-title { font-size: clamp(2.6rem, 6vw, 4.2rem); margin: 18px 0 18px; letter-spacing: -0.04em; }
+  .page-lead { font-size: 1.12rem; color: var(--ink-soft); max-width: 620px; line-height: 1.65; }
+
+  .shop { padding: 12px 0 0; }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+  .filter-btn {
+    font-family: var(--font-display); font-weight: 600; font-size: .92rem;
+    padding: 10px 20px; border-radius: 999px; cursor: pointer;
+    border: 1.5px solid var(--line-strong); background: #fff; color: var(--ink-soft);
+    transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .filter-btn:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
+  .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+  .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+  .pcard { display: block; }
+  .pcard.is-hidden { display: none; }
+  .pcard-media {
+    aspect-ratio: 4/3.4; overflow: hidden; border-radius: 22px; background: var(--cream);
+    box-shadow: var(--shadow-sm);
+    transition: transform .4s cubic-bezier(.2,.8,.25,1), box-shadow .4s ease;
+  }
+  .pcard-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.25,1); }
+  .pcard:hover .pcard-media { transform: translateY(-8px); box-shadow: 0 22px 40px rgba(214,36,32,.18); }
+  .pcard:hover .pcard-media img { transform: scale(1.06); }
+  .pcard-body { padding: 16px 6px 0; }
+  .pcard-cat { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+  .pcard-body h3 { font-size: 1.1rem; letter-spacing: -0.02em; margin: 5px 0 5px; }
+  .pcard-body p { color: var(--ink-soft); font-size: .9rem; line-height: 1.5; }
+  .no-results { text-align: center; color: var(--ink-soft); padding: 40px 0; font-size: 1.05rem; }
+
+  .oem { margin-top: 40px; }
+  .oem-box { display: flex; justify-content: space-between; align-items: center; gap: 36px; flex-wrap: wrap; }
+  .oem-box h2 { color: #fff; font-size: clamp(1.8rem, 3.6vw, 2.5rem); margin-bottom: 12px; }
+  .oem-box p { color: rgba(255,255,255,.85); max-width: 480px; }
+  .oem-box .btn { flex-shrink: 0; }
+
+  @media (max-width: 900px) { .prod-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .prod-grid { grid-template-columns: 1fr 1fr; gap: 16px; } }
+</style>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const cards = document.querySelectorAll<HTMLElement>(".pcard");
+  const noRes = document.getElementById("no-results");
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const f = btn.dataset.filter;
+      btns.forEach((b) => b.classList.toggle("active", b === btn));
+      let shown = 0;
+      cards.forEach((c) => {
+        const match = f === "all" || c.dataset.cat === f;
+        c.classList.toggle("is-hidden", !match);
+        if (match) shown++;
+      });
+      if (noRes) noRes.hidden = shown > 0;
+    });
+  });
+</script>
