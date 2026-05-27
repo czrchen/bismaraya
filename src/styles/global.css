@@ -1,15 +1,15 @@
 /* ===========================================================
    Bismaraya (Ikan Mas) — modern Malaysian seafood brand
-   Red · ocean blue · yellow — surimi seafood products
+   Lee Kum Kee red + gold · surimi seafood products
    =========================================================== */
 
 :root {
-  /* Brand — red primary, ocean-blue dark sections, yellow accent (Ikan Mas logo) */
-  --navy:       #21306A;
-  --navy-2:     #2B3F87;
-  --red:        #D62420;   /* Ikan Mas red (primary accent / CTA) */
-  --red-deep:   #A8120E;
-  --gold:       #FFC81E;   /* yellow accent */
+  /* Brand — LKK red primary, deep maroon dark sections, warm gold accent */
+  --navy:       #5E1216;   /* deep maroon (dark sections) */
+  --navy-2:     #7C181C;
+  --red:        #C8102E;   /* LKK red (primary accent / CTA) */
+  --red-deep:   #A20C24;
+  --gold:       #E0A92E;   /* warm gold accent */
 
   /* Surface + text */
   --ink:        #241D1C;   /* warm near-black text */
