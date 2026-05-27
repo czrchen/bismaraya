@@ -134,6 +134,7 @@ const products = [
         if (match) shown++;
       });
       if (noRes) noRes.hidden = shown > 0;
+      window.dispatchEvent(new Event("resize"));
     });
   });
 </script>
